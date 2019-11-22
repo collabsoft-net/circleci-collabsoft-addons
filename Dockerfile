@@ -1,4 +1,4 @@
-FROM circleci/openjdk:8u171-browsers-node
+FROM circleci/openjdk:8u232-node-browsers
 
 USER root:root
 
