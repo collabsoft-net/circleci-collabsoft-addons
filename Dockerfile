@@ -1,4 +1,4 @@
-FROM cimg/openjdk:11.0.21-node
+FROM cimg/openjdk:21.0-node
 
 USER root:root
 
