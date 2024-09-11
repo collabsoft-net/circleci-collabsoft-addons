@@ -5,7 +5,7 @@ jobs:
     executor: default
     steps:
       - build:
-          version: "22.0"
+          version: "21.0"
           tag: latest
 
   java_8:
@@ -35,13 +35,6 @@ jobs:
       - build:
           version: "21.0"
           tag: java-21
-
-  java_22:
-    executor: default
-    steps:
-      - build:
-          version: "22.0"
-          tag: java-22
 
 executors:
 
@@ -89,7 +82,6 @@ workflows:
       - java_11
       - java_17
       - java_21
-      - java_22
 
 
 
