@@ -5,42 +5,42 @@ jobs:
     executor: docker
     steps:
       - build:
-          version: 22.0
+          version: "22.0"
           tag: latest
 
   java_8:
     executor: docker
     steps:
       - build:
-          version: 8.0
+          version: "8.0"
           tag: java-8
 
   java_11:
     executor: docker
     steps:
       - build:
-          version: 11.0
+          version: "11.0"
           tag: java-11
 
   java_17:
     executor: docker
     steps:
       - build:
-          version: 17.0
+          version: "17.0"
           tag: java-17
 
   java_21:
     executor: docker
     steps:
       - build:
-          version: 21.0
+          version: "21.0"
           tag: java-21
 
   java_22:
     executor: docker
     steps:
       - build:
-          version: 22.0
+          version: "22.0"
           tag: java-22
 
 executors:
