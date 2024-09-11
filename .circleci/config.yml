@@ -84,7 +84,6 @@ commands:
 
 workflows:
   deploy:
-    parallelism: 10
     jobs:
       - latest
       - java_8
