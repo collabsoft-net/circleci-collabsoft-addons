@@ -48,10 +48,8 @@ commands:
     parameters:
       version:
         type: string
-        default: "21.0"
       tag:
         type: string
-        default: "21.0"
         
     steps:
       - checkout
