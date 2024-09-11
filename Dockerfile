@@ -1,4 +1,5 @@
-FROM cimg/openjdk:21.0
+ARG  JAVA_VERSION=21.0
+FROM cimg/openjdk:${JAVA_VERSION}
 
 USER root:root
 

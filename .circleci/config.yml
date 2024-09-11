@@ -1,9 +1,66 @@
 version: 2.1
 jobs:
 
+  latest:
+    executor: docker
+    steps:
+      - build:
+          version: 22.0
+          tag: latest
+
+  java_8:
+    executor: docker
+    steps:
+      - build:
+          version: 8.0
+          tag: java-8
+
+  java_11:
+    executor: docker
+    steps:
+      - build:
+          version: 11.0
+          tag: java-11
+
+  java_17:
+    executor: docker
+    steps:
+      - build:
+          version: 17.0
+          tag: java-17
+
+  java_21:
+    executor: docker
+    steps:
+      - build:
+          version: 21.0
+          tag: java-21
+
+  java_22:
+    executor: docker
+    steps:
+      - build:
+          version: 22.0
+          tag: java-22
+
+executors:
+
+  docker:
+    machine:
+      image: ubuntu-2204:current
+
+
+commands:
+
   build:
-    docker:
-      - image: cimg/openjdk:11.0.21-node
+    parameters:
+      version:
+        type: string
+        default: "21.0"
+      tag:
+        type: string
+        default: "21.0"
+        
     steps:
       - checkout
 
@@ -21,14 +78,20 @@ jobs:
 
       - run:
           command: |
-            docker build -t remie/circleci-collabsoft-addons:latest .
+            docker build --build-arg "JAVA_VERSION=<< parameters.version >>" -t remie/circleci-collabsoft-addons:<< parameters.tag >> .
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-            docker push remie/circleci-collabsoft-addons:latest
+            docker push remie/circleci-collabsoft-addons:<< parameters.tag >>
 
 workflows:
   deploy:
+    parallelism: 10
     jobs:
-      - build
+      - latest
+      - java_8
+      - java_11
+      - java_17
+      - java_21
+      - java_22
 
 
 
